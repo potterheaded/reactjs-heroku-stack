@@ -51,12 +51,12 @@ jobs:
           git commit -m "Generate framework code and initialize workflows"
           git push origin -u main
       
-#       - name: deploy
-#         uses: akhileshns/heroku-deploy@v3.12.12
-#         with:
-#           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-#           heroku_app_name: ${{secrets.APP_NAME}}
-#           heroku_email: ${{secrets.HEROKU_EMAIL}}
+      - name: deploy
+        uses: akhileshns/heroku-deploy@v3.12.12
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: ${{secrets.APP_NAME}}
+          heroku_email: ${{secrets.HEROKU_EMAIL}}
 
       - name: Website URL
         run: |
