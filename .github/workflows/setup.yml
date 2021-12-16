@@ -1,26 +1,75 @@
-name: Create the files.
+name: "Setup build and deployment of stack"
 
 on:
   workflow_dispatch:
+    inputs:
+      HEROKU_API_KEY:
+        required: true
+        description: 'Heroku API Key for deployment'
+      APP_NAME:
+        required: true
+        description: 'App Name to be deployed on Heroku (must be unique)'
+      HEROKU_EMAIL:
+        required: true
+        description: 'Heroku Email Id'
 
 jobs:
-  stack-initialization:
+  setup:
     runs-on: ubuntu-latest
+
     steps:
-      - name: checkout the repo
+      - name: checkout
         uses: actions/checkout@v2
-      
-      - name: move the file
+          
+      - name: use node.js 16.13.1 
+        uses: actions/setup-node@v1
+        with:
+          node-version: 16.13.1
+          registry-url: https://registry.npmjs.org/
+
+      - name: CRA Bootstrapping
         run: |
-          mkdir .github/stacks
-          mv ./instance-contents/new-stack.yml .github/stacks/stack.yml
-          mv ./instance-contents/README.md ./README.md
-          rm -r ./instance-contents
-      
-      - name: Commit files
+          npx create-next-app . --template redux-typescript
+          npm install --save react-router-dom
+
+      - name: Configure git
         run: |
-          git config --global user.name '${{github.actor}}'
-          git config --global user.email '${{github.actor}}@users.noreply.github.com'
-          git add -A
-          git commit -m "Added readme and stack template."
-          git push
+          git config --global user.email "${{ github.actor }}@users.noreply.github.com"
+          git config --global user.name "${{ github.actor }}"
+          git remote set-url origin https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
+          
+      - name: Commit generated code and initialize workflows
+        run: |
+          git add .
+          git commit -m "Generate framework code and initialize workflows"
+          git push origin -u main
+      
+      - name: deploy
+        uses: akhileshns/heroku-deploy@v3.12.12
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: ${{secrets.APP_NAME}}
+          heroku_email: ${{secrets.HEROKU_EMAIL}}
+
+      - name: Website URL
+        run: |
+          echo "Website URL: https://${{secrets.APP_NAME}}.herokuapp.com"
+          
+      - name: Wait for website to come online
+        timeout-minutes: 5 
+        id: get-url
+        run: |
+          echo "Waiting for the website to come alive..."
+          URL="https://${{secrets.APP_NAME}}.herokuapp.com"
+          sleep 20
+          STATUS_CODE=$(curl -o /dev/null -s -w "%{http_code}\n" $URL)
+          echo "STATUSCODE: $STATUS_CODE"
+          while [ $STATUS_CODE -ne 200 ]
+          do
+            sleep 10
+            STATUS_CODE=$(curl -o /dev/null -s -w "%{http_code}\n" $URL)
+            echo "STATUSCODE: $STATUS_CODE"
+          done
+          echo "Website is up and running..."
+          echo "Browse here: $URL"       
+          echo "::set-output name=your_site::$URL"
