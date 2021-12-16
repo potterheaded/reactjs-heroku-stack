@@ -29,8 +29,10 @@ jobs:
 
       - name: CRA Bootstrapping
         run: |
-          npx create-next-app . --template redux-typescript
-          # npm install --save react-router-dom
+          npx create-next-app my-app --template redux-typescript
+          cp -r my-app/* .
+          rm -rf my-app
+          # cd npm install --save react-router-dom
 
       - name: Configure git
         run: |
