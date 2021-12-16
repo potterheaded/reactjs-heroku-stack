@@ -50,19 +50,20 @@ jobs:
         uses: akhileshns/heroku-deploy@v3.12.12
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: ${{secrets.APP_NAME}}
-          heroku_email: ${{secrets.HEROKU_EMAIL}}
+          heroku_app_name: "potterheaded11"
+          heroku_email: "potterheaded@github.com"
+          remote_brach: "main"
 
       - name: Website URL
         run: |
-          echo "Website URL: https://${{secrets.APP_NAME}}.herokuapp.com"
+          echo "Website URL: https://$heroku_app_name.herokuapp.com"
           
       - name: Wait for website to come online
         timeout-minutes: 5 
         id: get-url
         run: |
           echo "Waiting for the website to come alive..."
-          URL="https://${{secrets.APP_NAME}}.herokuapp.com"
+          URL="https://$heroku_app_name.herokuapp.com"
           sleep 20
           STATUS_CODE=$(curl -o /dev/null -s -w "%{http_code}\n" $URL)
           echo "STATUSCODE: $STATUS_CODE"
