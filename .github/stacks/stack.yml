@@ -7,15 +7,25 @@ branding:
 inputs:                                                  
   - name: HEROKU_API_KEY                                  
     description: Heroku API Key for deployment
+    is_secret: true
   - name: APP_NAME
     description: App Name to be deployed on Heroku (must be unique)
+    is_secret: true
   - name: HEROKU_EMAIL
     description: Heroku Email Id
+    is_secret: true
 
 configs:
   repo-metadata:
     parameters:
       description: 'ReactJS App with TS, Router and Redux deployed on Heroku.'
+      secrets: 
+      - name: HEROKU_API_KEY
+        value: ${{inputs.HEROKU_API_KEY}}
+      - name: APP_NAME
+        value: ${{inputs.APP_NAME}}
+      - name: HEROKU_EMAIL
+        value: ${{inputs.HEROKU_EMAIL}}
       topics:
       - reactjs
       - typescript
