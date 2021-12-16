@@ -18,11 +18,11 @@ configs:
       description: 'ReactJS App with TS, Router and Redux deployed on Heroku.'
       secrets: 
       - name: HEROKU_API_KEY
-        value: ${{inputs.API_KEY}}
+        value: ${{ inputs.API_KEY }}
       - name: HEROKU_APP_NAME
-        value: ${{inputs.APP_NAME}}
+        value: ${{ inputs.APP_NAME }}
       - name: HEROKU_EMAIL
-        value: ${{inputs.EMAIL}}
+        value: ${{ inputs.EMAIL }}
       topics:
       - reactjs
       - typescript
