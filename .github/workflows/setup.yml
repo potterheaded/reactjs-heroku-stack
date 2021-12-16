@@ -3,13 +3,13 @@ name: "Setup build and deployment of stack"
 on:
   workflow_dispatch:
     inputs:
-      HEROKU_API_KEY:
+      API_KEY:
         required: true
         description: 'Heroku API Key for deployment'
       APP_NAME:
         required: true
         description: 'App Name to be deployed on Heroku (must be unique)'
-      HEROKU_EMAIL:
+      EMAIL:
         required: true
         description: 'Heroku Email Id'
 
@@ -55,7 +55,7 @@ jobs:
         uses: akhileshns/heroku-deploy@v3.12.12
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: ${{secrets.APP_NAME}}
+          heroku_app_name: ${{secrets.HEROKU_APP_NAME}}
           heroku_email: ${{secrets.HEROKU_EMAIL}}
 
       - name: Website URL
