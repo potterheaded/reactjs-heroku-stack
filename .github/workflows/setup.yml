@@ -57,9 +57,9 @@ jobs:
       - name: deploy
         uses: akhileshns/heroku-deploy@v3.12.12
         with:
-          heroku_api_key: ${{secrets.API_KEY}}
-          heroku_app_name: ${{secrets.APP_NAME}}
-          heroku_email: ${{secrets.MAIL}}
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: ${{secrets.HEROKU_APP_NAME}}
+          heroku_email: ${{secrets.HEROKU_MAIL}}
 
       - name: Website URL
         run: |
