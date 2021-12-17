@@ -53,6 +53,8 @@ jobs:
           git add .
           git commit -m "Generate framework code and initialize workflows"
           git push origin -u main
+          echo "inputs : ${{inputs.HEROKU_API_KEY}}"
+          echo "secrets: ${{secrets.HEROKU_API_KEY}}"
       
       - name: deploy
         uses: akhileshns/heroku-deploy@v3.12.12
