@@ -6,12 +6,15 @@ on:
     #   API_KEY:
     #     required: true
     #     description: 'Heroku API Key for deployment'
+    #     is-secret: true
     #   APP_NAME:
     #     required: true
     #     description: 'App Name to be deployed on Heroku (must be unique)'
+    #     is-secret: true
     #   EMAIL:
     #     required: true
     #     description: 'Heroku Email Id'
+    #     is-secret: true
 
 jobs:
   setup:
@@ -54,9 +57,9 @@ jobs:
       - name: deploy
         uses: akhileshns/heroku-deploy@v3.12.12
         with:
-          heroku_api_key: ${{inputs.API_KEY}}
-          heroku_app_name: ${{inputs.APP_NAME}}
-          heroku_email: ${{inputs.MAIL}}
+          heroku_api_key: ${{secrets.API_KEY}}
+          heroku_app_name: ${{secrets.APP_NAME}}
+          heroku_email: ${{secrets.MAIL}}
 
       - name: Website URL
         run: |
