@@ -40,7 +40,7 @@ jobs:
           npx create-react-app my-app --template redux-typescript
           cp -r my-app/* .
           rm -rf my-app
-          # cd npm install --save react-router-dom
+          npm install --save react-router-dom
 
       - name: Configure git
         run: |
