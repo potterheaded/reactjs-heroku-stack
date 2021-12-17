@@ -65,14 +65,14 @@ jobs:
 
       - name: Website URL
         run: |
-          echo "Website URL: https://$heroku_app_name.herokuapp.com"
+          echo "Website URL: https://${{secrets.HEROKU_APP_NAME}}.herokuapp.com"
           
       - name: Wait for website to come online
         timeout-minutes: 5 
         id: get-url
         run: |
           echo "Waiting for the website to come alive..."
-          URL="https://$heroku_app_name.herokuapp.com"
+          URL="https://${{secrets.HEROKU_APP_NAME}}.herokuapp.com"
           sleep 20
           STATUS_CODE=$(curl -o /dev/null -s -w "%{http_code}\n" $URL)
           echo "STATUSCODE: $STATUS_CODE"
