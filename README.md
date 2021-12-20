@@ -1,10 +1,31 @@
-# Shhh... something amazing is brewing here 🧪
-Here starts the journey to create an amazing stack. We have set up a [`.github/workflows/ci.yml`](.github/workflows/ci.yml) to run some checks on your stack and help you debug it. Get started by editing [`.github/stacks/stack.yml`](.github/stacks/stack.yml) to configure the stack the way you want. Use the comments in it and this [doc](https://github.com/github/github-stacks/blob/main/adrs/stack-schema.md) to get an idea of the syntax.
+## ReactJS Stack
+Now you can quickly spin up a [ReactJS](https://reactjs.org/docs/getting-started.html) app with support of [TypeScript](https://www.typescriptlang.org/), [React Router](https://reactrouter.com/) and [Redux](https://redux.js.org/) hosted on [Heroku](https://www.heroku.com).
 
-Points to keep in mind:
-1. **Stacks can be only consumed through releases** - `Use this template` button uses the latest release. So make sure to create a release on an update to be able to test out the changes (we have better experiences coming 🙏). You can uncomment a step in [`.github/workflows/ci.yml`](.github/stacks/stack.yml) which creates a release on every push.
-2. **Check your CI runs if you have issues with the stack** - We have a workflow set up to run some checks on your stack template. If you get - `Issues found in stack template` while releasing, the logs of `Run Pre Publish Checks` should have an answer to why its failing. If not, it's probably an issue with the init workflow file (non existent or improper trigger) or the app section (invalid slug or more than 100 apps defined). You can reach out to us for help.
-3. **Definitely reach out to us once you finish authoring a stack** - We can help you out on releasing this stack to the marketplace so others can discover your innovation. We also would love to meet you and take your feedback on the whole experience. 
+Using this stack as template would create a new repository for codebase and host the ReactJS app on the Heroku URL provided as input by the user.
 
-Reach out to us in this [channel](https://github.slack.com/archives/C02KXRVHTB5) or feel free to DM me or anyone in the stacks team for any help 😁.
-Thank you so much for trying out stacks 💖
+## Prerequisites
+Having a Heroku account (Yes, that's it!! )
+
+## What are the inputs to pass while setting up the stack?
+```
+- API_KEY (Heroku Secret API Key) 🤫
+- APP_NAME (Unique host URL on which the app will be deployed on Heroku) 🖥
+- EMAIL (Email id associated with Heroku account) 📧
+```
+
+## How to get Heroku API Key? 🔑
+```
+Login/Signup to Heroku -> Account Settings -> API Key
+```
+
+##App hosted URL would be:
+```
+<APP_NAME>.heroku.com
+
+Example: APP_NAME input by user is: sample-website
+Hosted URL: https://www.sample-website.heroku.com
+```
+
+## Tech Details:
+NodeJS: 16.13.1
+React Router: 6.2.1
