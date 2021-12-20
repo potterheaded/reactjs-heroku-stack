@@ -18,7 +18,7 @@ Having a Heroku account (Yes, that's it!! )
 Login/Signup to Heroku -> Account Settings -> API Key
 ```
 
-##App hosted URL would be:
+## App hosted URL would be:
 ```
 <APP_NAME>.heroku.com
 
