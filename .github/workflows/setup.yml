@@ -2,20 +2,6 @@ name: "Setup build and deployment of stack"
 
 on:
   workflow_dispatch:
-    # inputs:
-    #   API_KEY:
-    #     required: true
-    #     description: 'Heroku API Key for deployment'
-    #     is-secret: true
-    #   APP_NAME:
-    #     required: true
-    #     description: 'App Name to be deployed on Heroku (must be unique)'
-    #     is-secret: true
-    #   EMAIL:
-    #     required: true
-    #     description: 'Heroku Email Id'
-    #     is-secret: true
-
 jobs:
   setup:
     runs-on: ubuntu-latest
