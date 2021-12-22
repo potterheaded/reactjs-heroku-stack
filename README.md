@@ -20,10 +20,10 @@ Login/Signup to Heroku -> Account Settings -> API Key
 
 ## App hosted URL would be:
 ```
-<APP_NAME>.heroku.com
+<APP_NAME>.herokuapp.com
 
 Example: APP_NAME input by user is: sample-website
-Hosted URL: https://www.sample-website.heroku.com
+Hosted URL: https://www.sample-website.herokuapp.com
 ```
 
 ## Tech Details:
