@@ -9,7 +9,7 @@ inputs:
     description: Heroku API Key for deployment
     is-secret: true
   - name: APP_NAME
-    description: App Name to be deployed on Heroku (must be unique)
+    description: App Name to be deployed on Heroku (must be unique in Heroku as it doesn't allow two same app names)
     is-secret: true
   - name: EMAIL
     description: Heroku Email Id
