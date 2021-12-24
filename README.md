@@ -28,5 +28,5 @@ Hosted URL: https://www.sample-website.herokuapp.com
 ```
 
 ## Tech Details:
-NodeJS: 16.13.1
-React Router: 6.2.1
+- NodeJS: 16.13.1
+- React Router: 6.2.1
