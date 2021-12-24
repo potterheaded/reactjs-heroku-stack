@@ -17,6 +17,7 @@ Having a Heroku account (Yes, that's it!! )
 ```
 Login/Signup to Heroku -> Account Settings -> API Key
 ```
+Check [this](https://help.heroku.com/PBGP6IDE/how-should-i-generate-an-api-key-that-allows-me-to-use-the-heroku-platform-api) out for more details on getting Heroku API Key.
 
 ## App hosted URL would be:
 ```
